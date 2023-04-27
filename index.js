@@ -17,6 +17,19 @@ app.get("/", (req, res)=>{
     })
 })
 
+app.get("/product/:id", (req, res) => {
+    let productNew = new ProductManager("./products.json")
+    let id = req.params.id
+    const resp = productNew.getProductById(id)
+    resp.then(pr => {
+        console.log(pr)
+        let productos = JSON.parse(pr, null, 2)
+        res.send({data:productos, menssge:"Peticion excitosa"})
+    }).catch(err => {
+        console.log(err)
+    })
+})
+
 app.listen(8080, () =>{
     console.log("Server run on port 8080")
 }) 
