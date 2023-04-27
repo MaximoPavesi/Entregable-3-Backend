@@ -88,3 +88,6 @@ const productManager = new ProductManager();
   await productManager.deleteProduct(productId);
   console.log(await productManager.getProducts()); // []
 })();
+
+
+module.exports = ProductManager
